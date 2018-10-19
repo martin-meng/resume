@@ -1,50 +1,71 @@
 <!DOCTYPE html>
 <html lang="zh-CN">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Martin-孟的个人简历</title>
-    <link rel="stylesheet" href="a.css">
-    <style></style>
+    <title>css简历练习</title>
+    <link rel="stylesheet" href="./css/a.css">
+    <script src="//at.alicdn.com/t/font_881711_jkuta7vdz8f.js"></script>
+
+    <style type="text/css">
+        .icon {
+            width: 1em;
+            height: 1em;
+            vertical-align: -0.15em;
+            fill: currentColor;
+            overflow: hidden;
+        }
+    </style>
 </head>
 
 <body>
-    <div class="topNavBar clearfix" > 
-        <!--
-        定义顶部导航条class
-        ！！！！！！！注意clearfix属性一定要包裹在 双引号内，在双引号外的话不会生效！而且容易引起下面的元素浮动上来！！！！！！！！！！
-        -->
-        <a href="#" class="logo" alt="logo" style="float: left;">
-            <span class="rs">RS</span><span class="card">card</span>
-        </a>
-        <!--alt = alternative  如果图片下载失败了，则展示alt里面的内容 -->
-        <nav style="float: right">
-            <ul class="clearfix">
-                <li><a href="#">关于</a></li>
-                <li><a href="#">技能</a></li>
-                <li><a href="#">作品</a></li>
-                <li><a href="#">博客</a></li>
-                <li><a href="#">日历</a></li>
-                <li><a href="#">联系方式</a></li>
-                <li><a href="#">其他</a></li>
-            </ul>
-        </nav>
+    <div class="topNavBar">
+        <div class="topNavBar-inner clearfix">
+            <!--
+                    定义顶部导航条class
+                    ！！！！！！！注意clearfix属性一定要包裹在 双引号内，在双引号外的话不会生效！而且容易引起下面的元素浮动上来！！！！！！！！！！
+                    -->
+            <a href="#" class="logo" alt="logo" style="float: left;">
+                <span class="rs">RS</span><span class="card">card</span>
+            </a>
+            <!--alt = alternative  如果图片下载失败了，则展示alt里面的内容 -->
+            <nav style="float: right">
+                <ul class="clearfix">
+                    <li><a href="#">关于</a></li>
+                    <li><a href="#">技能</a></li>
+                    <li><a href="#">作品</a></li>
+                    <li><a href="#">博客</a></li>
+                    <li><a href="#">日历</a></li>
+                    <li><a href="#">联系方式</a></li>
+                    <li><a href="#">其他</a></li>
+                </ul>
+            </nav>
+        </div>
     </div>
-    <div class="banner" style="background-image: url(#)"></div>
-    <main>
-        <div class="card">
-            <div class="pictureAndText">
-                <div class="picture" >
-                    <img src="" alt="头像">
+
+
+
+    <div class="banner" style="">
+
+        <div class="mask">
+        </div>
+    </div>
+    <main style="">
+        <div class="userCard">
+
+            <div class="pictureAndText clearfix">
+                <div class="picture">
+                    <img src="./img/avatar.jpg" width="299" height="347" alt="头像">
                 </div>
-            </div>
-            <div class="text">
-                <div class="profile">
-                    <span class="welcome">Hello</span>
-                    <h1>孟坤鹏</h1>
+                <div class="text">
+                    <span class="welcome">Hello<span class="triangle"></span></span>
+                    <h1>夜未央</h1>
                     <p>前端开发工程师</p>
+
                     <hr>
+
                     <dl>
                         <!--
                         dl的对应英文单词为：description list  译为描述列表
@@ -54,56 +75,123 @@
                         <dt>年龄</dt><dd>18</dd>
                         <dt>所在城市</dt><dd>北京</dd>
                         <dt>邮箱</dt><dd>martin-meng@foxmail.com</dd>
-                        <dt>手机</dt><dd>13716693632</dd>
+                        <dt>手机</dt><dd>13712345678 </dd>
                     </dl>
                 </div>
-                <footer class="media"> 
-                    <!--这里的7个a标签可以用缩写一次写完， a[href="#"]*7>img[src=#][alt="#"]-->
-                    <a href="#"><img src="#" alt="#"></a>
-                    <a href="#"><img src="#" alt="#"></a>
-                    <a href="#"><img src="#" alt="#"></a>
-                    <a href="#"><img src="#" alt="#"></a>
-                    <a href="#"><img src="#" alt="#"></a>
-                    <a href="#"><img src="#" alt="#"></a>
-                    <a href="#"><img src="#" alt="#"></a>
-                </footer>
             </div>
-        </div> 
-        <a href="#" class="button">下载 pdf 简历</a>
+
+            <footer class="media">
+                <!--这里的7个a标签可以用缩写一次写完， a[href="#"]*7>img[src=#][alt="#"]-->
+
+                <a href="#"><svg class="icon" aria-hidden="true"><use xlink:href="#icon-github"></use></svg></a>
+                <a href="#"><svg class="icon" aria-hidden="true"><use xlink:href="#icon-twitter"></use></svg></a>
+                <a href="#"><svg class="icon" aria-hidden="true"><use xlink:href="#icon-weibo"></use></svg></a>
+
+            </footer>
+        </div>
+
+        <p class="downloadResume-wrapper">
+            <a href="#" class="button">下载 pdf 简历</a>
+        </p>
+
         <p>
-        彼此相爱，却不要让爱成了束缚：不如让它成为涌动的大海，两岸乃是你们的灵魂。互斟满杯，却不要同饮一杯。相赠面包，却不要共食一个。<br>
-        一起歌舞欢喜，却依然各自独立，相互交心，却不是让对方收藏。因为唯有生命之手，方能收容你们的心。站在一起却不要过于靠近。
+            彼此相爱，却不要让爱成了束缚：不如让它成为涌动的大海，两岸乃是你们的灵魂。互斟满杯，却不要同饮一杯。相赠面包，却不要共食一个。
+            <br>一起歌舞欢喜，却依然各自独立，相互交心，却不是让对方收藏。因为唯有生命之手，方能收容你们的心。站在一起却不要过于靠近。
         </p>
 
     </main>
-    <section>
-        <h2>技能</h2>
-            <ol>
-              <li>HTML 5 &amp; CSS 3</li>
-              <li>JavaScript</li>
-              <li>jQuery</li>
-              <li>Vue</li>
-              <li>React</li>
-              <li>HTTP</li>
+    <section class="skills">
+            <h2>技能</h2>
+            <ol class="clearfix">
+              <li>
+                <h3>
+                  HTML 5 &amp; CSS 3
+                </h3>
+                <div class="progressBar">
+                  <div class="progress" style="width: 10%;"></div>
+                </div>
+              </li>
+              <li>
+                <h3>
+                  JavaScript
+                </h3>
+                <div class="progressBar">
+                  <div class="progress" style="width: 20%"></div>
+                </div>
+              </li>
+              <li>
+                <h3>
+                  jQuery
+                </h3>
+                <div class="progressBar">
+                  <div class="progress" style="width: 30%"></div>
+                </div>
+              </li>
+              <li>
+                <h3>
+                  Vue.js
+                </h3>
+                <div class="progressBar">
+                  <div class="progress" style="width: 40%"></div>
+                </div>
+              </li>
+              <li>
+                <h3>
+                  React.js
+                </h3>
+                <div class="progressBar">
+                  <div class="progress"  style="width: 50%"></div>
+                </div>
+              </li>
+              <li>
+                <h3>
+                  Node.js
+                </h3>
+                <div class="progressBar">
+                  <div class="progress"  style="width: 60%"></div>
+                </div>
+              </li>
             </ol>
-    </section>
-        <section>
+          </section>
+          <section class="portfolio">
             <h2>作品集</h2>
             <nav>
-              <ol>
-                <li>所有</li>
-                <li>框架</li>
-                <li>原生JS&amp;CSS</li>
+              <ol class="clearfix">
+                <li id="portfolio1">所有</li>
+                <li id="portfolio2">框架</li>
+                <li id="portfolio3">原生JS&amp;CSS</li>
               </ol>
+              <div id="portfolioBar" class="bar state-1">
+                <div class="bar-inner"></div>
+              </div>
             </nav>
-      
-            <div class="jobs">
-              <div class="big"></div>
-              <div class="small"></div>
-              <div class="small"></div>
+            <script>
+              portfolio1.onclick= function(){
+                portfolioBar.className = 'bar state-1'
+              }
+              portfolio2.onclick= function(){
+                portfolioBar.className = 'bar state-2'
+              }
+              portfolio3.onclick= function(){
+                portfolioBar.className = 'bar state-3'
+              }
+            </script>
+        
+        
+            <div class="works" style="height: 597px;">
+              <div class="big" style="top: 0; left: 0;">
+                <img src="./img/1.jpg" alt="作品1">
+              </div>
+              <div class="small" style="top: 0; left: 645px;">
+                <img src="./img/2.jpg" alt="作品2">
+              </div>
+              <div class="small" style="top: 312px; left: 645px;">
+                <img src="./img/3.jpg" alt="作品3">
+              </div>
             </div>
-      
-    </section>
-</body>
-
-</html>
+        
+          </section>
+        </body>
+        
+        </html>
+        
