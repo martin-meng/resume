@@ -116,12 +116,12 @@ a{
   height: 515px;
   background-image: url(../img/wallhaven.jpg);
   background-position: center center;   /* 这个属性是让图片在屏幕中 */
-  
+  background-size: cover;
   /* 
   background-size: cover   是按比例填充框架，图片按比例放置在框架中。可能会被裁剪，但用的最多。
   background-size: contain 是按比例适合内容，图片全部放置在框架中，可能会有宽度和高度不够而透出来的问题 
   */
-  background-size: cover;
+  
 }
 
 
