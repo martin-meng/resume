@@ -1,13 +1,13 @@
 body{ background-color: #EFEFEF; margin: 0; }
+a { color: inherit; /*继承祖辈的属性*/ text-decoration: none; /*不要下划线*/ }
 *{ margin: 0px; padding: 0px; }
 hr{ height: 0; border: none; border-top: 1px solid #E4E4E4; }
-a{ color: inherit; /*继承祖辈的属性*/ text-decoration: none;/*不要下划线*/ }
 ul, ol { list-style: none; }
-.clearfix::after{ content: ''; display: block; clear: both; }
-/* clearfix 伪类 清除浮动 一定要熟记！！！！ */
+h1,h2,h3,h4,h5,h6{font-weight: normal}
+.clearfix::after{ content: ''; display: block; clear: both; } /* clearfix 伪类 清除浮动 一定要熟记！！！！ */
+
 /* 将topNavBar下移一些像素 */
 .topNavBar { padding: 20px 0; /* 设置四周边距，上右下左逆时针 ，中间空格隔开，结尾用分号结束 */ position: fixed; /* 使topNavBar 脱离文档流 */ top: 0; left: 0; width: 100%; }
-
 .topNavBar-inner { padding: 0 16px; /* 设置四周边距，上右下左逆时针 ，中间空格隔开，结尾用分号结束 */ } /* 将navbar的高度补到40 */
 .topNavBar nav { padding-top: 7px; } /* 去除list 小圆点 */
 .topNavBar nav > ul { list-style: none; margin: 0; padding: 0; }
