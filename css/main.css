@@ -7,21 +7,43 @@ h1,h2,h3,h4,h5,h6{font-weight: normal}
 .clearfix::after{ content: ''; display: block; clear: both; } /* clearfix 伪类 清除浮动 一定要熟记！！！！ */
 
 /* 将topNavBar下移一些像素 */
-.topNavBar { padding: 20px 0; /* 设置四周边距，上右下左逆时针 ，中间空格隔开，结尾用分号结束 */ position: fixed; /* 使topNavBar 脱离文档流 */ top: 0; left: 0; width: 100%; }
+.topNavBar { padding: 20px 0; position: fixed; /* 使topNavBar 脱离文档流 */ top: 0; left: 0; width: 100%; transition: all .5s; color: #B7B7B7; }
+/* 设置四周边距，上右下左逆时针 ，中间空格隔开，结尾用分号结束 */
+.topNavBar.sticky{ background: white; box-shadow:0px 8px 16px -6px rgba(0, 0, 0, .1); color: #3d4451; padding: 10px 0; z-index: 1; }
 .topNavBar-inner { padding: 0 16px; /* 设置四周边距，上右下左逆时针 ，中间空格隔开，结尾用分号结束 */ } /* 将navbar的高度补到40 */
-.topNavBar nav { padding-top: 7px; } /* 去除list 小圆点 */
+.topNavBar nav { padding-top: 5px; } /* 去除list 小圆点 */
 .topNavBar nav > ul { list-style: none; margin: 0; padding: 0; }
-.topNavBar nav > ul > li{ float: left; margin-left: 17px; margin-right: 17px; }/* 设置li的左右内边距 */
+.topNavBar nav > ul > li{ float: left; margin-left: 17px; margin-right: 17px; position: relative;}/* 设置li的左右内边距 */
 /* 设置下边框3px，同时给了上下内边距5px, 发现li的高度和a标签高度不同，所以给了display:block属性，使li能够完全包裹住a标签 */
 /* 因为下边距给了3像素，为了使文字在高度的视觉上水平居中，所以我们给了上描边3像素，并设置为透明(transparent) */
-.topNavBar nav > ul > li >a { font-size: 12px; color: #B7B7B7; text-decoration: none; font-weight: bold; border-top: 3px solid transparent; border-bottom: 3px solid transparent; padding-top: 5px; padding-bottom: 5px; display: block;}
-.topNavBar nav > ul > li >a:hover { border-bottom: 3px solid red; }/*设置a标签的鼠标经过效果*/
+.topNavBar nav > ul > li >a { font-size: 12px; color: inherit; text-decoration: none; font-weight: bold; border-top: 3px solid transparent; border-bottom: 3px solid transparent; padding-top: 5px; padding-bottom: 5px; display: block; position: relative;}
+.topNavBar nav > ul > li.active >a::after { content: ''; display: block; position:absolute; top: 100%; left: 0; width: 100%; background: #e06567; height: 3px; animation: menuSlide .3s; }
+@keyframes menuSlide{ 0% { width: 0; } 100% { width: 100%; } }
+
+
+.topNavBar .submenu {
+  display: none;
+  position: absolute;
+  right: 0;
+  top: 100%;
+  background: white;
+  color: #3d4451;
+  font-size: 13px;
+  padding: 10px 20px;
+  padding-bottom: 26px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, .1);
+}
+.topNavBar li.active>.submenu { display: block; animation: submenuSlide .3s; }
+@keyframes submenuSlide{
+  0%{margin-right: 100%}
+  100% { margin-right: 0% }
+ }
+.topNavBar .submenu > li { white-space: nowrap;margin-top: 10px; animation: menuSlide .3s; }
+
+
 .topNavBar .logo { font-size: 24px; font-family: 'Arial Black'; padding-top: 3px; padding-bottom: 4px; } /* 如果字体名称中包含空格，那么请用单引号将文字名称包裹起来，如果有多个字体，请用逗号分开，最后最后别忘了写； */
-
-
 .topNavBar .logo .rs{ margin-right: 4px; color: #E6686A; }
 .topNavBar .logo .card { color: #999; }
-
 .banner{ height: 515px; background-image: url(../img/wallhaven.jpg); background-position: center center; /* 这个属性是让图片在屏幕中 */ background-size: cover; } 
  /* background-size: cover   是按比例填充框架，图片按比例放置在框架中。可能会被裁剪，但用的最多。 background-size: contain 是按比例适合内容，图片全部放置在框架中，可能会有宽度和高度不够而透出来的问题 */
 .banner .mask{ height: 515px; background-color:rgba(12, 10, 37, 0.705); }

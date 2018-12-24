@@ -7,40 +7,107 @@
   <meta http-equiv="X-UA-Compatible" content="ie=edge">
   <title>css简历练习</title>
   <link rel="stylesheet" href="./css/main.css">
-   <script src="//at.alicdn.com/t/font_881711_jkuta7vdz8f.js"></script>
+  <script src="//at.alicdn.com/t/font_881711_jkuta7vdz8f.js"></script>
 
   <style type="text/css">
-    .loading { width: 200px; height: 200px; position: relative; }
-    .loading::before, .loading::after { content: ""; position: absolute; background: black; border-radius: 50%; width: 0px;
-    height: 0px; top: 0; left: 0; bottom: 0; right: 0; margin: auto; animation: s 1.5s linear infinite; }
-    .loading::after { animation-delay: 0.75s; }
+    .loading {
+      width: 200px;
+      height: 200px;
+      position: relative;
+    }
+
+    .loading::before,
+    .loading::after {
+      content: "";
+      position: absolute;
+      background: black;
+      border-radius: 50%;
+      width: 0px;
+      height: 0px;
+      top: 0;
+      left: 0;
+      bottom: 0;
+      right: 0;
+      margin: auto;
+      animation: s 1.5s linear infinite;
+    }
+
+    .loading::after {
+      animation-delay: 0.75s;
+    }
 
     @keyframes s {
-    0% { idth: 0px; height: 0px; opacity: 1; }
-    100% { width: 100px; height: 100px; opacity: 0; }
+      0% {
+        idth: 0px;
+        height: 0px;
+        opacity: 1;
+      }
+
+      100% {
+        width: 100px;
+        height: 100px;
+        opacity: 0;
+      }
     }
-    .icon { width: 1em; height: 1em; vertical-align: -0.15em; fill: currentColor; overflow: hidden; }
-    .site-welcome { display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: #888; z-index: 1; justify-content: center; align-items: center; }
-    .site-welcome.active { display: flex; } </style>
+
+    .icon {
+      width: 1em;
+      height: 1em;
+      vertical-align: -0.15em;
+      fill: currentColor;
+      overflow: hidden;
+    }
+
+    .site-welcome {
+      display: none;
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: #888;
+      z-index: 1;
+      justify-content: center;
+      align-items: center;
+    }
+
+    .site-welcome.active {
+      display: flex;
+    }
+  </style>
 </head>
 
 <body>
   <div id="siteWelcome" class="site-welcome active">
     <div class="loading"></div>
   </div>
-  <div class="topNavBar">
+  <div id="topNavBar" class="topNavBar">
     <div class="topNavBar-inner clearfix">
       <!-- 定义顶部导航条class ！！！！！！！注意clearfix属性一定要包裹在 双引号内，在双引号外的话不会生效！而且容易引起下面的元素浮动上来！！！！！！！！！！ -->
       <a href="#" class="logo" alt="logo" style="float: left;">
         <span class="rs">RS</span><span class="card">card</span>
       </a>
       <!--alt = alternative  如果图片下载失败了，则展示alt里面的内容 -->
-      <nav style="float: right">
+      <nav class="menu" style="float: right">
         <ul class="clearfix">
-          <li><a href="#">关于</a></li>
-          <li><a href="#">技能</a></li>
-          <li><a href="#">作品</a></li>
-          <li><a href="#">博客</a></li>
+          <li><a href="#siteAbout">关于</a></li>
+          <li><a href="#siteSkills">技能</a></li>
+          <li>
+            <a href="#siteWorks">作品</a>
+            <ul class="submenu">
+              <li><a href="">作品1</a></li>
+              <li><a href="">作品2</a></li>
+              <li><a href="">作品3</a></li>
+            </ul>
+          </li>
+          <li>
+            <a href="#">博客</a>
+            <ul class="submenu">
+              <li><a href="">博客1</a></li>
+              <li><a href="">博客2</a></li>
+              <li><a href="">博客3</a></li>
+            </ul>
+          </li>
           <li><a href="#">日历</a></li>
           <li><a href="#">联系方式</a></li>
           <li><a href="#">其他</a></li>
@@ -52,8 +119,8 @@
   <div class="banner" style="">
     <div class="mask"></div>
   </div>
-  <main style="">
-    <div class="userCard">
+  <main>
+    <div id="siteAbout" class="userCard">
 
       <div class="pictureAndText clearfix">
         <div class="picture">
@@ -109,7 +176,7 @@
     </p>
 
   </main>
-  <section class="skills">
+  <section id="siteSkills"class="skills">
     <h2>技能</h2>
     <ol class="clearfix">
       <li>
@@ -162,7 +229,7 @@
       </li>
     </ol>
   </section>
-  <section class="portfolio">
+  <section id="siteWorks" class="portfolio">
     <h2>作品集</h2>
     <nav>
       <ol class="clearfix">
@@ -200,10 +267,48 @@
     </div>
 
   </section>
+
+
   <script>
-    setTimeout(function(){
+    setTimeout(function () {
       siteWelcome.classList.remove('active')
-    },1500)
+    }, 1100)
+
+    window.onscroll = function (xxx) {
+      if (window.scrollY > 0) {
+        topNavBar.classList.add('sticky')
+      } else {
+        topNavBar.classList.remove('sticky')
+      }
+    }
+
+    let liTags = document.querySelectorAll("nav.menu>ul>li")
+    for (let i = 0; i < liTags.length; i++) {
+      liTags[i].onmouseenter = function (x) {
+        x.currentTarget.classList.add('active')
+      }
+      liTags[i].onmouseleave = function (x) {
+        x.currentTarget.classList.remove('active')
+      }
+    }
+
+    let aTags = document.querySelectorAll('nav.menu>ul>li>a')
+    console.log(aTags)
+    for (let i=0 ;i<aTags.length;i++){
+      aTags[i].onclick = function(x){
+        x.preventDefault() //阻止默认动作
+        let a = x.currentTarget //获取到用户点的 a 标签
+        let href =  a.getAttribute('href') // 获取到 a 标签上面写的 href ,这是没有处理过的 href 
+        //console.log(a.href) 这个是浏览器处理过的 href
+        let element = document.querySelector(href) //根据这个 href 得到我们的这个元素
+        let rect = element.getBoundingClientRect()  
+        let top = element.offsetTop //得到距顶的距离
+        window.scrollTo(0,top-120) // 把页面定位到元素上方120像素的位置
+      }
+    }
+
+
+
   </script>
 </body>
 
