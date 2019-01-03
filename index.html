@@ -120,7 +120,7 @@
     <div class="mask"></div>
   </div>
   <main>
-    <div id="siteAbout" class="userCard">
+    <div data-x id="siteAbout" class="userCard">
 
       <div class="pictureAndText clearfix">
         <div class="picture">
@@ -176,7 +176,7 @@
     </p>
 
   </main>
-  <section id="siteSkills"class="skills">
+  <section data-x id="siteSkills" class="skills">
     <h2>技能</h2>
     <ol class="clearfix">
       <li>
@@ -229,7 +229,7 @@
       </li>
     </ol>
   </section>
-  <section id="siteWorks" class="portfolio">
+  <section data-x id="siteWorks" class="portfolio">
     <h2>作品集</h2>
     <nav>
       <ol class="clearfix">
@@ -268,18 +268,53 @@
 
   </section>
 
-
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/tween.js/17.2.0/Tween.min.js"></script>
   <script>
+
     setTimeout(function () {
       siteWelcome.classList.remove('active')
-    }, 1100)
+    }, 100)
 
-    window.onscroll = function (xxx) {
+    //添加 offset 类
+    let specialTags = document.querySelectorAll('[data-x]')
+    // ★★★★★★★★★ 这里不是很清楚， 以后过来再看看 ★★★★★★★★★★★★
+    //这里的遍历是从 0 开始的！
+    for (let i = 0; i < specialTags.length; i++) {
+      specialTags[i].classList.add('offset')
+    }
+
+    setTimeout(function(){
+    findClosest()
+    },555)
+
+    window.onscroll = function (x) {
       if (window.scrollY > 0) {
         topNavBar.classList.add('sticky')
       } else {
         topNavBar.classList.remove('sticky')
       }
+      findClosest()
+    }
+
+    function findClosest() {
+      let specialTags = document.querySelectorAll('[data-x]')
+      let minIndex = 0
+      // ★★★★★★★★★ 这里不是很清楚， 以后过来再看看 ★★★★★★★★★★★★
+      for (let i = 1; i < specialTags.length; i++) {
+        if (Math.abs(specialTags[i].offsetTop - window.scrollY) < Math.abs(specialTags[minIndex].offsetTop - window.scrollY)) {
+          minIndex = i
+        }
+      } 
+      //minIdex 就是离窗口顶部最近的元素
+      specialTags[minIndex].classList.remove('offset')
+      let id = specialTags[minIndex].id
+      let a = document.querySelector('a[href="#' + id + '"]')
+      let li=a.parentNode 
+      let brothersAndMe=li.parentNode.children
+      for(let i=0;i < brothersAndMe.length; i++) {
+      brothersAndMe[i].classList.remove('highlight')
+      }
+      li.classList.add('highlight')
     }
 
     let liTags = document.querySelectorAll("nav.menu>ul>li")
@@ -292,23 +327,65 @@
       }
     }
 
+
+
     let aTags = document.querySelectorAll('nav.menu>ul>li>a')
-    console.log(aTags)
-    for (let i=0 ;i<aTags.length;i++){
-      aTags[i].onclick = function(x){
+
+    function animate(time) {
+      requestAnimationFrame(animate);
+      TWEEN.update(time);
+    }
+    requestAnimationFrame(animate);
+
+    //console.log(aTags)
+    for (let i = 0; i < aTags.length; i++) {
+      aTags[i].onclick = function (x) {
         x.preventDefault() //阻止默认动作
         let a = x.currentTarget //获取到用户点的 a 标签
-        let href =  a.getAttribute('href') // 获取到 a 标签上面写的 href ,这是没有处理过的 href 
+        let href = a.getAttribute('href') // 获取到 a 标签上面写的 href ,这是没有处理过的 href 
         //console.log(a.href) 这个是浏览器处理过的 href
-        let element = document.querySelector(href) //根据这个 href 得到我们的这个元素
-        let rect = element.getBoundingClientRect()  
+        let element = document.querySelector(href) //根据这个 href 得到我们的这个元素  返回的不是数组，而是第一个元素
+        let rect = element.getBoundingClientRect()
         let top = element.offsetTop //得到距顶的距离
-        window.scrollTo(0,top-120) // 把页面定位到元素上方120像素的位置
+        //上面四句话可以简写成一句
+        //let top = document.querySelector(x.currentTarget.getAttribute('href')).offsetTop
+
+        // let n = 25 //一共动多少次
+        // let duration = 500/n  //多少时间动一次
+
+        let currentTop = window.scrollY
+        let targetTop = top - 80
+        let s = targetTop - currentTop
+        // let i = 0
+        // let id = setInterval(() => {
+        //   if(i===n){
+        //     window.clearInterval(id)
+        //     return
+        //   }
+        //   i=i+1
+        //   window.scrollTo(0, currentTop + distance*i)
+        // }, duration)
+        //window.scrollTo(0,top-120) // 把页面定位到元素上方120像素的位置
+
+
+        var coords = {
+          y: currentTop
+        }; //初始位置
+        var t = Math.abs((s / 100) * 300)
+        if (t > 500) {
+          t = 500
+        }
+        var tween = new TWEEN.Tween(coords)
+          .to({
+            y: targetTop
+          }, t) //结束位置  时间
+          .easing(TWEEN.Easing.Quadratic.InOut)
+          .onUpdate(function () {
+            window.scrollTo(0, coords.y)
+          })
+          .start();
       }
     }
-
-
-
   </script>
 </body>
 
